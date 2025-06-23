@@ -1,21 +1,78 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+  <meta charset="UTF-8">
+  <title>탄생석 결과</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url("/images/birthstone.png");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 30px 50px;
+      border: 2px solid #444;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+    }
+
+    h2 {
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 25px;
+      color: #333;
+    }
+
+    .back-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #555;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .back-btn:hover {
+      background-color: #333;
+    }
+  </style>
 </head>
 <body>
-	<h1>결과</h1>
-	
-	<div th:if="${birthstone}">
-        <h2>💎 탄생석 정보</h2>
-        <p><strong>이름:</strong> <span th:text="${birthstone.name}"></span></p>
-        <p><strong>의미:</strong> <span th:text="${birthstone.meaning}"></span></p>
+  <div class="container">
+    <h2>탄생석 결과</h2>
+
+    <div th:if="${birthstone}">
+      <p>
+	      <strong th:text="${month}"></strong>월
+	      <strong th:text="${day}"></strong>일의 탄생석은
+	      <strong th:text="${birthstone.name}" style="color: green;">탄생석 이름</strong>이며,
+	      의미는
+	      <strong th:text="${birthstone.meaning}"  style="color: green;">탄생석 의미</strong>
+	      입니다!
+  	  </p>
     </div>
 
     <div th:if="${error}">
-        <p style="color:red;" th:text="${error}"></p>
+      <p th:text="${error}" style="color: red;"></p>
     </div>
-	
+
+    <a href="/" class="back-btn">다시 조회하기</a>
+  </div>
 </body>
 </html>
