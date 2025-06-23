@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>결과</h1>
+	
+	<div th:if="${birthstone}">
+        <h2>💎 탄생석 정보</h2>
+        <p><strong>이름:</strong> <span th:text="${birthstone.name}"></span></p>
+        <p><strong>의미:</strong> <span th:text="${birthstone.meaning}"></span></p>
+    </div>
+
+    <div th:if="${error}">
+        <p style="color:red;" th:text="${error}"></p>
+    </div>
+	
+</body>
+</html>
