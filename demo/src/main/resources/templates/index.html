@@ -1,22 +1,119 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>탄생석 조회</title>
-</head>
-<body>
-    <h1>탄생석 조회</h1>
+  <meta charset="UTF-8">
+  <title>탄생석 조회기</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url("/images/birthstone.png");
+      background-size: cover;
+      background-position: center;
+    }
 
-    <form th:action="@{/birthstones/search}" method="get">
-        <label>월:
-            <input type="number" name="month" min="1" max="12" required>
-        </label>
-        <label>일:
-            <input type="number" name="day" min="1" max="31" required>
-        </label>
-        <button type="submit">조회</button>
-    </form>
+    .container {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 30px 40px;
+      border: 2px solid #333;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      text-align: center;
+    }
 
+    #title {
+    	font-size: 35px;
+    	font-weight: bold;
+      margin-bottom: 20px;
+    }
+    #birthstoneForm{
+    	font-size: 20px;
+    }
+
+	 #birth{
+	 	width:100px;
+	 }
+	
+    input[type="number"] {
+      padding: 8px 12px;
+      font-size: 16px;
+      margin: 10px 5px;
+      border-radius: 10px;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #222;
+    }
+    #inputdate{
     
+      margin: 20px 20px ;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #submitbtn{
+   	  width: 250px;
+   	  height: 50px;
+   	  border-radius: 10px;
+   	  padding: 8px 12px;
+      font-size: 16px;
+      margin: 10px 5px;
+      font-weight: bold;
+    }
+    
+    
+  </style>
+
+
+</head>
+<body>	
+  <div class="container">
+    <p id="title">💎탄생석 조회하기🎉</p>
+    <form id="birthstoneForm" action="/birthstones/search" method="GET">
+      <label id="birthdate">생년월일 입력:</label><br>
+      <div id="inputdate">
+	      <input type="number" name="month" id="birth" required />월
+	      <input type="number" name="day" id="birth" required />일
+      </div>
+      <input type="submit" value="조회" id="submitbtn"/>
+    </form>
+    <div id="result"></div>
+  </div>
+
+ <!--  <script>
+    $(document).ready(function () {
+      $("#birthstoneForm").on("submit", function (e) {
+        e.preventDefault();
+
+        const birthValue = $("#birth").val();
+
+        if (!birthValue) {
+          $("#result").text("생년월일을 입력해주세요.");
+          return;
+        }
+
+        $.ajax({
+          url: "/birthstones/search",
+          method: "POST",
+          contentType: "application/json",
+          data: JSON.stringify({ birth: birthValue }),
+          success: function (response) {
+            $("#result").text("당신의 탄생석은: " + response);
+          },
+          error: function () {
+            $("#result").text("서버 오류가 발생했습니다.");
+          }
+        });
+      });
+    });
+  </script> -->
 </body>
 </html>
