@@ -7,9 +7,11 @@
 </head>
 <body>
   <div class="container">
-    <h1>⭐ 별자리 결과</h1>
+    <h1>⭐ 별자리 결과 ⭐</h1>
     
     <div th:if="${zodiac}">
+     <img th:src="@{'/images/zodiac/' + ${zodiac.name} + '.png'}" 
+           alt="별자리 이미지" class="zodiac-img">
       <h2>
         당신의 별자리는 <strong th:text="${zodiac.name}"></strong>입니다!
       </h2>
